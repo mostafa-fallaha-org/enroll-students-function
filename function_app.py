@@ -21,8 +21,7 @@ def enrollStudent(req: func.HttpRequest) -> func.HttpResponse:
 
         student_id = req.params.get('student_id').lower()
 
-        LARGE_PERSON_GROUP_ID = str('i4')
-
+        LARGE_PERSON_GROUP_ID = str(req.params.get('cur_class').lower())
 
         with FaceAdministrationClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY)) as face_admin_client, \
         FaceClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY)) as face_client:
